@@ -9,8 +9,8 @@ load_dotenv()
 app = Quart(__name__)
 
 CLIENT_ID = "1510361485199671566"
-CLIENT_SECRET = os.getenv("CLIENT_SECRET")  # put this in your .env!
-REDIRECT_URI = "http://localhost:5000/callback"
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+REDIRECT_URI = "https://authserver-mpeo.onrender.com/callback"
 FIREBASE_URL = "https://roblox-control-52d72-default-rtdb.firebaseio.com/"
 
 @app.route('/login')
@@ -73,4 +73,4 @@ async def callback():
         return "❌ Linked successfully, but failed to write records to Firebase.", 500
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(host='0.0.0.0', port=5000)
